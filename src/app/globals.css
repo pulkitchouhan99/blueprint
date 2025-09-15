@@ -219,4 +219,15 @@ body {
   --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
 
+/* Sidebar Text Styling */
+.sidebar-text {
+  font-family: "InterTight", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+
 /* Remove @layer base for now as it's causing issues */
+
+/* Remove problematic @layer base */
