@@ -13,6 +13,8 @@ import PinIcon from "@/app/assets/svg/PinIcon";
 import WorkflowIcon from "@/app/assets/svg/WorkflowIcon";
 import AcuityIcon from "@/app/assets/svg/AcuityIcon";
 import NavigatorResourceIcon from "@/app/assets/svg/NavigatorResourceIcon";
+import SignoutIcon from "@/app/assets/svg/SignoutIcon";
+import HelpIcon from "@/app/assets/svg/HelpIcon";
 import { ChevronDown } from "lucide-react";
 
 interface NavItem {
@@ -25,7 +27,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     title: "Navigator Dashboard",
-    href: "/dashboard",
+    href: "/navigator/dashboard",
     icon: <DashboardIcon />,
   },
   {
@@ -98,7 +100,7 @@ const MenuItem = ({ item, level = 0 }: { item: NavItem; level?: number }) => {
         <button
           onClick={toggleExpanded}
           className={`w-full flex items-center justify-between py-3 px-3 text-left rounded-lg transition-colors ${
-            isActive ? "bg-[#003e7d] text-[#FFFFFF]" : "text-[#FFFFFF] hover:bg-[#003e7d] hover:text-[#FFFFFF]"
+            isActive ? "bg-[#FFFFFF36] text-[#FFFFFF]" : "text-[#FFFFFF] hover:bg-[#FFFFFF1A] hover:text-[#FFFFFF]"
           } ${paddingLeft}`}>
           <div className="flex items-center space-x-3">
             {item.icon && level === 0 && item.icon}
@@ -113,8 +115,8 @@ const MenuItem = ({ item, level = 0 }: { item: NavItem; level?: number }) => {
       ) : (
         <Link
           href={item.href}
-          className={`w-full flex items-center py-3 px-3 rounded-lg transition-colors ${
-            isActive ? "bg-[#003e7d] text-[#FFFFFF]" : "text-[#FFFFFF] hover:bg-[#003e7d] hover:text-[#FFFFFF]"
+          className={`w-full flex items-center py-3 px-3 transition-colors ${
+            isActive ? "bg-[#FFFFFF36] text-[#FFFFFF]" : "text-[#FFFFFF] hover:bg-[#FFFFFF1A] hover:text-[#FFFFFF]"
           } ${paddingLeft}`}>
           <div className="flex items-center space-x-3">
             {item.icon && level === 0 && item.icon}
@@ -142,7 +144,7 @@ const MenuItem = ({ item, level = 0 }: { item: NavItem; level?: number }) => {
 export function AppSidebar() {
   return (
     <div
-      className="w-64 text-[#FFFFFF] h-full flex flex-col"
+      className="w-60 text-[#FFFFFF] h-full flex flex-col"
       style={{
         background: "linear-gradient(179deg, #004489 -3.28%, #00254B 100%)",
       }}>
@@ -156,6 +158,22 @@ export function AppSidebar() {
         {navItems.map(item => (
           <MenuItem key={item.href} item={item} />
         ))}
+      </div>
+
+      {/* Bottom Actions */}
+      <div className="px-1 py-4 space-y-2">
+        <Link href="/sign-out" className={`w-full flex items-center py-3 px-3 transition-colors`}>
+          <div className="flex items-center space-x-3">
+            <SignoutIcon />
+            <span className="sidebar-text">Sign Out</span>
+          </div>
+        </Link>
+        <Link href="/help-center" className={`w-full flex items-center py-3 px-3 transition-colors`}>
+          <div className="flex items-center space-x-3">
+            <HelpIcon />
+            <span className="sidebar-text">Help Center</span>
+          </div>
+        </Link>
       </div>
     </div>
   );
